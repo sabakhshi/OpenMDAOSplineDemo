@@ -43,9 +43,8 @@ prob.setup()
 knot_vec = 1.5 * np.random.rand(n_cp)
 prob.set_val("spline_cp", knot_vec)
 
-#Run model and generate N2 diagram
+#Run model
 prob.run_model()
-om.n2(prob, show_browser=False)
 
 #Get results for plotting
 knots = prob.get_val("test_bsp.spline_cp")
