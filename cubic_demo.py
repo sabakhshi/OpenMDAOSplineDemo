@@ -2,6 +2,7 @@ import numpy as np
 import openmdao.api as om
 import matplotlib.pyplot as plt
 import niceplots
+from animate_spline import animate_spline
 
 np.random.seed(100)
 
@@ -69,3 +70,4 @@ ax.set_ylabel("$y$", rotation="horizontal", ha="right")
 niceplots.adjust_spines(ax)
 
 niceplots.save_figs(fig, f"cubic_demo", ["pdf", "png", "svg"])
+animate_spline(fig,ax,prob,3,0.5)

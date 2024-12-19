@@ -3,7 +3,12 @@ import openmdao.api as om
 import matplotlib.pyplot as plt
 import niceplots
 
+from animate_spline import animate_spline
+
 np.random.seed(100)
+
+#Set to True to animate the spline the control point motion
+animate = False
 
 #Number of spline control points
 n_cp = 10
@@ -51,8 +56,8 @@ prob.set_val("spline_cp", knot_vec)
 prob.run_model()
 
 #Get results for plotting
-knots = prob.get_val("test_bsp.spline_cp")
-y_interp = prob.get_val("test_bsp.spline")
+knots = prob.get_val("spline_cp")
+y_interp = prob.get_val("spline")
 
 print("The knot vector (y_cp): {}".format(knots))
 print("The spline evaluations (y_interp)): {}".format(y_interp))
@@ -73,3 +78,5 @@ ax.set_ylabel("$y$", rotation="horizontal", ha="right")
 niceplots.adjust_spines(ax)
 
 niceplots.save_figs(fig, f"bspline_demo", ["pdf", "png", "svg"])
+if animate:
+    animate_spline(fig,ax,prob,index=3,rng_scale=0.5)
