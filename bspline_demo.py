@@ -44,10 +44,10 @@ comp.add_spline(y_cp_name="spline_cp", y_interp_name="spline")
 prob.setup()
 
 #Generate your "knot vector" meaning y_cp and set it to the spline_cp input
-#For a random knot vector
-knot_vec = 1.5 * np.random.rand(n_cp)
 #For a custom knot vector. Must be n_cp long.
 knot_vec = np.array([1.0,0.56,0.24,0.89,0.9,0.3,0.6,0.7,0.2,0.5])
+#For a random knot vector
+#knot_vec = 1.5 * np.random.rand(n_cp)
 prob.set_val("spline_cp", knot_vec)
 
 #Run model and generate N2 diagram
@@ -74,5 +74,6 @@ ax.set_ylabel("$y$", rotation="horizontal", ha="right")
 
 (line,) = ax.plot(x_interp, y_interp.flatten(), clip_on=False)
 (markers,) = ax.plot(x_cp, knots.flatten(), "o", clip_on=False)
+niceplots.adjust_spines(ax)
 
 niceplots.save_figs(fig, f"bspline_demo", ["pdf", "png", "svg"])
