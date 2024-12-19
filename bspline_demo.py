@@ -59,7 +59,7 @@ knots = prob.get_val("test_bsp.spline_cp")
 y_interp = prob.get_val("test_bsp.spline")
 
 print("The knot vector (y_cp): {}".format(knots))
-print("The spline evaluations (y_interp)): {}".format(knots))
+print("The spline evaluations (y_interp)): {}".format(y_interp))
 
 
 #Plotting
