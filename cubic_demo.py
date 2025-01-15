@@ -74,4 +74,4 @@ niceplots.adjust_spines(ax)
 
 niceplots.save_figs(fig, f"cubic_demo", ["pdf", "png", "svg"])
 if animate:
-    animate_spline(fig,ax,prob,index=3,rng_scale=0.5)
+    animate_spline(fig,ax,prob,index=np.arange(0,n_cp),rng_scale=0.5,frames=120)
