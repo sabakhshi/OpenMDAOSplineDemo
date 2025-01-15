@@ -6,6 +6,9 @@ from animate_spline import animate_spline
 
 np.random.seed(100)
 
+#Set to True to animate the spline the control point motion
+animate = True
+
 #Number of spline control points
 n_cp = 10
 
@@ -70,4 +73,5 @@ ax.set_ylabel("$y$", rotation="horizontal", ha="right")
 niceplots.adjust_spines(ax)
 
 niceplots.save_figs(fig, f"cubic_demo", ["pdf", "png", "svg"])
-animate_spline(fig,ax,prob,3,0.5)
+if animate:
+    animate_spline(fig,ax,prob,index=3,rng_scale=0.5)

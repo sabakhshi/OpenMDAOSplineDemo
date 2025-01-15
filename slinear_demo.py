@@ -6,6 +6,9 @@ from animate_spline import animate_spline
 
 np.random.seed(100)
 
+#Set to True to animate the spline the control point motion
+animate = False
+
 #Number of spline control points
 n_cp = 10
 

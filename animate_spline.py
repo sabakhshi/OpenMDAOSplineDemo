@@ -57,5 +57,6 @@ def animate_spline(fig,ax,spline_prob,index,rng_scale,frames=120):
         markers.set_ydata(spline_prob.get_val("spline_cp").flatten())
         return None
     
+    FFwriter = animation.FFMpegWriter(fps=30, extra_args=['-vcodec', 'libx264'])
     anim = animation.FuncAnimation(fig, animate, init_func=init, frames=frames, interval=20, repeat=True, repeat_delay=1000)
-    anim.save("spline_animation.gif", writer=animation.PillowWriter(fps=30))
+    anim.save("spline_animation.mp4", writer=FFwriter)
